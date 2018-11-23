@@ -30,8 +30,8 @@ import java.util.Random;
 
 //import android.support.v4.view.animation.FastOutLinearInInterpolator;
 
-public class SwipeCaptchaView extends ImageView {
-	private static final String TAG = "zxt/" + SwipeCaptchaView.class.getName();
+public class JigsawCaptchaView extends ImageView {
+	private static final String TAG = "zxt/" + JigsawCaptchaView.class.getName();
 	//控件的宽高
 	protected int mWidth;
 	protected int mHeight;
@@ -74,15 +74,15 @@ public class SwipeCaptchaView extends ImageView {
 	private Path mSuccessPath;//成功动画 平行四边形Path
 
 
-	public SwipeCaptchaView(Context context) {
+	public JigsawCaptchaView(Context context) {
 		this(context, null);
 	}
 
-	public SwipeCaptchaView(Context context, AttributeSet attrs) {
+	public JigsawCaptchaView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
 	}
 
-	public SwipeCaptchaView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public JigsawCaptchaView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		init(context, attrs, defStyleAttr);
 	}
@@ -93,15 +93,15 @@ public class SwipeCaptchaView extends ImageView {
 		mCaptchaHeight = defaultSize;
 		mCaptchaWidth = defaultSize;
 		mMatchDeviation = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
-		TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SwipeCaptchaView, defStyleAttr, 0);
+		TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.JigsawCaptchaView, defStyleAttr, 0);
 		int n = ta.getIndexCount();
 		for (int i = 0; i < n; i++) {
 			int attr = ta.getIndex(i);
-			if (attr == R.styleable.SwipeCaptchaView_captchaHeight) {
+			if (attr == R.styleable.JigsawCaptchaView_captchaHeight) {
 				mCaptchaHeight = (int) ta.getDimension(attr, defaultSize);
-			} else if (attr == R.styleable.SwipeCaptchaView_captchaWidth) {
+			} else if (attr == R.styleable.JigsawCaptchaView_captchaWidth) {
 				mCaptchaWidth = (int) ta.getDimension(attr, defaultSize);
-			} else if (attr == R.styleable.SwipeCaptchaView_matchDeviation) {
+			} else if (attr == R.styleable.JigsawCaptchaView_matchDeviation) {
 				mMatchDeviation = ta.getDimension(attr, mMatchDeviation);
 			}
 		}
@@ -164,7 +164,7 @@ public class SwipeCaptchaView extends ImageView {
 		mFailAnim.addListener(new AnimatorListenerAdapter() {
 			@Override
 			public void onAnimationEnd(Animator animation) {
-				onCaptchaMatchCallback.matchFailed(SwipeCaptchaView.this);
+				onCaptchaMatchCallback.matchFailed(JigsawCaptchaView.this);
 			}
 		});
 		mFailAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -200,7 +200,7 @@ public class SwipeCaptchaView extends ImageView {
 
 			@Override
 			public void onAnimationEnd(Animator animation) {
-				onCaptchaMatchCallback.matchSuccess(SwipeCaptchaView.this);
+				onCaptchaMatchCallback.matchSuccess(JigsawCaptchaView.this);
 				isShowSuccessAnim = false;
 				isMatchMode = false;
 			}
@@ -416,9 +416,9 @@ public class SwipeCaptchaView extends ImageView {
 	}
 
 	public interface OnCaptchaMatchCallback {
-		void matchSuccess(SwipeCaptchaView swipeCaptchaView);
+		void matchSuccess(JigsawCaptchaView swipeCaptchaView);
 
-		void matchFailed(SwipeCaptchaView swipeCaptchaView);
+		void matchFailed(JigsawCaptchaView swipeCaptchaView);
 	}
 
 	/**
@@ -436,7 +436,7 @@ public class SwipeCaptchaView extends ImageView {
 	 * @param onCaptchaMatchCallback
 	 * @return
 	 */
-	public SwipeCaptchaView setOnCaptchaMatchCallback(OnCaptchaMatchCallback onCaptchaMatchCallback) {
+	public JigsawCaptchaView setOnCaptchaMatchCallback(OnCaptchaMatchCallback onCaptchaMatchCallback) {
 		this.onCaptchaMatchCallback = onCaptchaMatchCallback;
 		return this;
 	}

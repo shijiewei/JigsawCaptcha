@@ -12,7 +12,7 @@
 	android:paddingTop="@dimen/activity_vertical_margin"
 	tools:context=".ui.MainActivity">
 
-	<com.jackie.toolkit.gui.jigsawcaptcha.SwipeCaptchaView
+	<com.jackie.toolkit.gui.jigsawcaptcha.JigsawCaptchaView
 		android:id="@+id/swipeCaptchaView"
 		android:layout_width="300dp"
 		android:layout_height="200dp"
